@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+    <link rel="stylesheet" href="css/season.css">
+</head>
+<body>
+<div class="top-banner" id="banner">
+    <canvas width="1" height="1" id="container" style="position: absolute;"></canvas>
+    <img src="img/icon-a.png" class="icon-a shake-a">
+
+    <p class="top-text down-a">
+        是时候和<b>阳光</b>私奔到海边
+    </p>
+    <img src="img/icon-b.png" class="icon-b moveIconUp">
+</div>
+<div id="products">
+
+
+</div>
+<script id="productTemp" type="text/html">
+    {{each Ac as act}}
+    <div class="pro-box">
+        <a href="{{act.link}}" style="background: {{act.color}}" class="pro-title">
+            <b class="location">
+                {{act.name}}
+            </b>
+            {{act.desc}}
+        </a>
+        <ul class="pro-list">
+            {{each act.acts as a}}
+            <li>
+                <img src="{{imgPath}}{{a.image}}" class="pro-img">
+                <div class="text">
+                    <div class="title">{{a.actname}}</div>
+                    <div class="city">出发城市：{{a.scenename_cn}}</div>
+                    <div style="color: {{act.color}}" class="price">￥<b>{{a.price['RMB']}}</b></div>
+                    <a href="{{a.link}}" style="background: {{act.color}}" class="detail-btn">
+                        查看详情
+                    </a>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    {{/each}}
+    <img src="img/banner-btn.png" id="bannerBtn" class="banner-btn">
+</script>
+<script src="js/template.js"></script>
+<script>
+    var data={Ac:[{"name":"夏威夷","desc":"海岛和比基尼更配哦","color":"#f37f2a","link":"http://lulutrip.com/activity/entry/region-Hawaii","acts":[{"actid":"3612","actname":"欧胡岛恐龙湾浮潜半日游 探寻蔚蓝海洋奥秘","link":"http://app.lulutrip.com/activity/view/id-3612","scenename_cn":"欧胡岛（檀香山）","price":{"USD":35,"EUR":25,"CAD":38,"RMB":218,"GBP":22},"thumb":"upload/201409/1410772442538_thumb.jpg","image":"upload/201409/1410772442538.jpg"},{"actid":"2984","actname":"乘坐敞开式直升机 近距离感受火山","link":"http://app.lulutrip.com/activity/view/id-2984","scenename_cn":"火山大岛","price":{"USD":282,"EUR":202,"CAD":305,"RMB":1757,"GBP":180},"thumb":"upload/201409/1410769410451_thumb.jpg","image":"upload/201409/1410769410451.jpg"},{"actid":"3043","actname":"茂宜岛观鲸巡航之旅 仅限观鲸季开放！","link":"http://app.lulutrip.com/activity/view/id-3043","scenename_cn":"茂宜岛","price":{"USD":42,"EUR":30,"CAD":46,"RMB":264,"GBP":27},"thumb":"upload/201412/1418637073564_thumb.jpg","image":"upload/201412/1418637073564.jpg"},{"actid":"4029","actname":"美泉宫之夜场音乐会","link":"http://app.lulutrip.com/activity/view/id-4029","scenename_cn":"维也纳","price":{"USD":53,"EUR":38,"CAD":58,"RMB":333,"GBP":34},"thumb":"upload/201412/1419581173328_thumb.jpg","image":"upload/201412/1419581173328.jpg"}]},{"name":"西锁岛","desc":"尽情追逐落日吧","color":"#7d97f4","link":"http://lulutrip.com/activity/entry?scene%5B%5D=209&page=1","acts":[{"actid":"3683","actname":"西锁岛观光游 感受浓浓南美风情","link":"http://app.lulutrip.com/activity/view/id-3683","scenename_cn":"西锁岛","price":{"USD":65,"EUR":46,"CAD":70,"RMB":405,"GBP":42},"thumb":"upload/201409/1410771880379_thumb.jpg","image":"upload/201409/1410771880379.jpg"},{"actid":"2962","actname":"西锁岛航海、浮潜之旅 探秘神奇水世界","link":"http://app.lulutrip.com/activity/view/id-2962","scenename_cn":"西锁岛","price":{"USD":99,"EUR":71,"CAD":107,"RMB":617,"GBP":63},"thumb":"upload/201409/1410769295787_thumb.jpg","image":"upload/201409/1410769295787.jpg"},{"actid":"3446","actname":"西锁岛单人滑翔伞 空中俯瞰海湾美景","link":"http://app.lulutrip.com/activity/view/id-3446","scenename_cn":"西锁岛","price":{"USD":46,"EUR":33,"CAD":49,"RMB":284,"GBP":29},"thumb":"upload/201409/1410782937462_thumb.jpg","image":"upload/201409/1410782937462.jpg"},{"actid":"2994","actname":"西锁岛（Key West）大西洋巡航 落日下的杯酒人生","link":"http://app.lulutrip.com/activity/view/id-2994","scenename_cn":"西锁岛","price":{"USD":79,"EUR":57,"CAD":86,"RMB":495,"GBP":51},"thumb":"upload/201409/1410769464120_thumb.jpg","image":"upload/201409/1410769464120.jpg"}]},{"name":"迈阿密","desc":"海滩派对到天明","color":"#ff8576","link":"http://lulutrip.com/activity/entry?scene%5B%5D=152&page=1","acts":[{"actid":"3042","actname":"迈阿密精华套餐游：城市观光+比斯坎湾巡游+大沼泽地汽船探险","link":"http://app.lulutrip.com/activity/view/id-3042","scenename_cn":"迈阿密","price":{"USD":49,"EUR":35,"CAD":53,"RMB":307,"GBP":31},"thumb":"upload/201409/1410769823634_thumb.jpg","image":"upload/201409/1410769823634.jpg"},{"actid":"3035","actname":"传奇别墅菲卡亚（Vizcaya） 迈阿密国家历史地标参观（含接送）","link":"http://app.lulutrip.com/activity/view/id-3035","scenename_cn":"迈阿密","price":{"USD":68,"EUR":49,"CAD":73,"RMB":424,"GBP":44},"thumb":"upload/201409/1410769780476_thumb.jpg","image":"upload/201409/1410769780476.jpg"}]},{"name":"澳大利亚","desc":"夏日浮潜正当","color":"#4ec7d7","link":"http://lulutrip.com/activity/entry/region-AU","acts":[{"actid":"4096","actname":"哥本哈根市区观光+趣伏里公园之旅","link":"http://app.lulutrip.com/activity/view/id-4096","scenename_cn":"哥本哈根","price":{"USD":64,"EUR":46,"CAD":69,"RMB":398,"GBP":41},"thumb":"upload/201412/1419581466643_thumb.jpg","image":"upload/201412/1419581466643.jpg"}]},{"name":"新西兰","desc":"仲夏挑战man up","color":"#ffbf1e","link":"http://lulutrip.com/activity/entry/region-AU"}]};
+    var imgArray = [{name: "dropAlpha", src: "img/css-drop-alpha.png"}, {
+        name: "dropColor",
+        src: "img/css-drop-color.png"
+    }, {name: "textureRainFg", src: "img/css-bg.jpg"}, {
+        name: "textureRainBg",
+        src: "img/css-bg.jpg"
+    }];
+    template.helper('imgPath', function () {
+        return 'http://s01.lulutrip.com\//';
+    });
+    document.getElementById('products').innerHTML = template('productTemp', data);
+    var banner = document.getElementById('banner');
+    var move;
+    banner.addEventListener('touchstart', function (se) {
+        se.preventDefault();
+        banner.addEventListener('touchmove', move = function (me) {
+            me.preventDefault();
+            if (se.changedTouches[0].pageY - me.changedTouches[0].pageY > 10) {
+                banner.classList.add('up');
+            }
+        })
+    })
+    document.getElementById('bannerBtn').addEventListener('touchstart', function (se) {
+        banner.classList.remove('up');
+    });
+</script>
+<script src="js/rain.js"></script>
+</body>
+</html>
